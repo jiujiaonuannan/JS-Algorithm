@@ -1,4 +1,5 @@
 /**
+* 解题思路：滑动窗口
  * @param {number[]} nums
  * @param {number} k
  * @return {number}
