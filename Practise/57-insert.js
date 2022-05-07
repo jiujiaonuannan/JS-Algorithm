@@ -26,3 +26,42 @@ var insert = function (intervals, newInterval) {
 
   return output;
 };
+
+/**
+ * @param {number[][]} intervals
+ * @param {number[]} newInterval
+ * @return {number[][]}
+ */
+var insert = function (intervals, newInterval) {
+  let res = [];
+  let i = 0;
+  let n = intervals.length;
+  let newStart = newInterval[0];
+  let newEnd = newInterval[1];
+  while (i < n && newStart > intervals[i][1]) {
+    res.push(intervals[i]);
+    i++;
+  }
+  while (i < n && newEnd >= intervals[i][0]) {
+    newStart = Math.min(newStart, intervals[i][0]);
+    newEnd = Math.max(newEnd, intervals[i][1]);
+    i++;
+  }
+  res.push([newStart, newEnd]);
+  while (i < n) {
+    res.push(intervals[i]);
+    i++;
+  }
+  return res;
+};
+
+insert(
+  [
+    [1, 2],
+    [3, 5],
+    [6, 7],
+    [8, 10],
+    [12, 16],
+  ],
+  [4, 8]
+);
